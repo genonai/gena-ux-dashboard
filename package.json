@@ -1,0 +1,13 @@
+{
+  "name": "amplitude-interpreter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Amplitude 데이터를 해석하고 UX 개선 효과를 기록하는 로컬 도구",
+  "type": "module",
+  "engines": { "node": ">=20.12" },
+  "scripts": {
+    "start": "node server.mjs",
+    "refresh": "node refresh.mjs",
+    "publish": "node publish.mjs"
+  }
+}

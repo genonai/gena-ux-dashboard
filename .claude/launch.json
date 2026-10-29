@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "amplitude-interpreter",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.mjs"],
+      "port": 4321
+    },
+    {
+      "name": "viewer-test",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["-e", "const h=require('http'),f=require('fs'),p=require('path'),d=p.resolve('.viewer'),T={'.html':'text/html; charset=utf-8','.js':'text/javascript','.json':'application/json'};h.createServer((q,r)=>{let u=decodeURIComponent(q.url.split('?')[0]);if(u==='/')u='/index.html';const x=p.join(d,u);if(!x.startsWith(d))return r.end();f.readFile(x,(e,b)=>{if(e){r.writeHead(404);return r.end()}r.writeHead(200,{'content-type':T[p.extname(x)]||'application/octet-stream'});r.end(b)})}).listen(4399,'127.0.0.1')"],
+      "port": 4399
+    }
+  ]
+}
