@@ -915,7 +915,8 @@ function stepName(s) {
 
 function parseCSV(text) {
   text = String(text || '').replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
-  const head = text.split('\n').slice(0, 30).join('\n');
+  // 구분자는 따옴표 밖에서만 센다(계열 이름 안의 "; "가 구분자로 오인되지 않게)
+  const head = text.split('\n').slice(0, 30).join('\n').replace(/"[^"]*"/g, '');
   const cnt = d => head.split(d).length - 1;
   const delim = [['\t', cnt('\t')], [',', cnt(',')], [';', cnt(';')]].sort((a, b) => b[1] - a[1])[0][0];
   const rows = []; let row = [], field = '', q = false;
